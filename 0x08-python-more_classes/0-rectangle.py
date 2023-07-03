@@ -14,5 +14,9 @@ class Rectangle:
         No attributes at the moment.
     """
 
-    pass
+    def __init__(self):
+        """
+        Initializes a new instance of the Rectangle class.
+        """
+        pass
 
