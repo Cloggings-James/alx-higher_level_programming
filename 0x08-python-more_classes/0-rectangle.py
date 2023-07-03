@@ -1,16 +1,20 @@
 #!/usr/bin/python3
 
 """
-Rectangle Module
-Defines the Rectangle class
+This module defines the Rectangle class.
 """
 
 
 class Rectangle:
     """
-    Rectangle class
+    This class represents a rectangle.
     """
-    pass
+
+    def __init__(self):
+        """
+        Initializes a new instance of the Rectangle class.
+        """
+        pass
 
 
 my_rectangle = Rectangle()
