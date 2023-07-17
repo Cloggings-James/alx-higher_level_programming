@@ -106,8 +106,16 @@ class Base:
 
 class TestBase(unittest.TestCase):
     def test_to_json_string(self):
-        # Write test cases to verify the behavior of to_json_string method
-        pass
+        # Test when list_dictionaries is empty
+        list_dictionaries = []
+        result = Base.to_json_string(list_dictionaries)
+        self.assertEqual(result, "[]")
+
+        # Test when list_dictionaries has dictionaries
+        list_dictionaries = [{'id': 1, 'name': 'John'}, {'id': 2, 'name': 'Jane'}]
+        result = Base.to_json_string(list_dictionaries)
+        expected = '[{"id": 1, "name": "John"}, {"id": 2, "name": "Jane"}]'
+        self.assertEqual(result, expected)
 
     def test_save_to_file(self):
         # Write test cases to verify the behavior of save_to_file method
