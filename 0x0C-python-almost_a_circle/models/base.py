@@ -3,7 +3,6 @@
 Module for the Base class.
 """
 import json
-import unittest
 
 
 class Base:
@@ -102,38 +101,4 @@ class Base:
             new_instance = None
         new_instance.update(**dictionary)
         return new_instance
-
-
-class TestBase(unittest.TestCase):
-    def test_to_json_string(self):
-        # Test when list_dictionaries is empty
-        list_dictionaries = []
-        result = Base.to_json_string(list_dictionaries)
-        self.assertEqual(result, "[]")
-
-        # Test when list_dictionaries has dictionaries
-        list_dictionaries = [{'id': 1, 'name': 'John'}, {'id': 2, 'name': 'Jane'}]
-        result = Base.to_json_string(list_dictionaries)
-        expected = '[{"id": 1, "name": "John"}, {"id": 2, "name": "Jane"}]'
-        self.assertEqual(result, expected)
-
-    def test_save_to_file(self):
-        # Write test cases to verify the behavior of save_to_file method
-        pass
-
-    def test_from_json_string(self):
-        # Write test cases to verify the behavior of from_json_string method
-        pass
-
-    def test_load_from_file(self):
-        # Write test cases to verify the behavior of load_from_file method
-        pass
-
-    def test_create(self):
-        # Write test cases to verify the behavior of create method
-        pass
-
-
-if __name__ == '__main__':
-    unittest.main()
 
