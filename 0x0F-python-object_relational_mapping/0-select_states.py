@@ -1,34 +1,25 @@
 #!/usr/bin/python3
-import MySQLdb
-import sys
+"""Lists all states from the database hbtn_0e_0_usa"""
 
-if __name__ == "__main__":
-    # Check for the correct number of arguments
-    if len(sys.argv) != 4:
-        print("Usage: ./0-select_states.py <username> <password> <database>")
-        sys.exit(1)
+if __name__ == '__main__':
+    from sys import argv
+    import MySQLdb as mysql
 
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    # Connect to the MySQL server
     try:
-        db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
-        cursor = db.cursor()
+        db = mysql.connect(host='localhost', port=3306, user=argv[1],
+                           passwd=argv[2], db=argv[3])
+    except Exception:
+        print('Failed to connect to the database')
+        exit(0)
 
-        # Execute the SQL query to select states
-        cursor.execute("SELECT * FROM states ORDER BY id")
+    cursor = db.cursor()
 
-        # Fetch all the rows and display the results
-        for row in cursor.fetchall():
-            print(row)
+    cursor.execute("SELECT * FROM states ORDER BY id ASC;")
 
-        # Close the cursor and database connection
-        cursor.close()
-        db.close()
+    result_query = cursor.fetchall()
 
-    except MySQLdb.Error as e:
-        print("MySQL Error:", e)
-        sys.exit(1)
+    for row in result_query:
+        print(row)
 
+    cursor.close()
+    db.close()
