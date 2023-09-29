@@ -1,17 +1,13 @@
 #!/usr/bin/python3
 """Script that Fetches https://intranet.hbtn.io/status"""
 
-Fetches the status of a URL using the urllib package and displays response information.
-"""
-
-import urllib.request
+from urllib.request import urlopen, Request
 
 if __name__ == "__main__":
-    url = "https://alx-intranet.hbtn.io/status"
-
-    with urllib.request.urlopen(url) as response:
-        content = response.read()
+    req = Request("https://alx-intranet.hbtn.io/status")
+    with urlopen(req) as resp:
+        body = resp.read()
         print("Body response:")
-        print("\t- type: {}".format(type(content)))
-        print("\t- content: {}".format(content.decode('utf-8')))
-
+        print("\t- type: {}".format(type(body)))
+        print("\t- content: {}".format(body))
+        print("\t- utf8 content: {}".format(body.decode("utf8")))
