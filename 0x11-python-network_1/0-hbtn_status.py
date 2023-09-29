@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""
+"""Script that Fetches https://intranet.hbtn.io/status"""
+
 Fetches the status of a URL using the urllib package and displays response information.
 """
 
