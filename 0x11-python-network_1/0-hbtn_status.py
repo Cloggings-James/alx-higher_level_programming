@@ -1,17 +1,16 @@
-#!/usr/bin/python3
-"""
-Fetches the status of a URL using the urllib package and displays response information.
-"""
-
+python
 import urllib.request
 
+def fetch_status():
+    try:
+        with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as response:
+            body = response.read()
+            print("Body response:")
+            print("\t- type: {}".format(type(body)))
+            print("\t- content: {}".format(body))
+            print("\t- utf8 content: {}".format(body.decode('utf-8')))
+    except urllib.error.URLError as e:
+        print("Error: {}".format(e.reason))
+
 if __name__ == "__main__":
-    url = "https://alx-intranet.hbtn.io/status"
-
-    with urllib.request.urlopen(url) as response:
-        content = response.read()
-        print("Body response:")
-        print(f"    - type: {type(content)}")
-        print(f"    - content: {content}")
-        print(f"    - utf8 content: {content.decode('utf-8')}")
-
+    fetch_status()
