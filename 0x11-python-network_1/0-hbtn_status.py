@@ -1,19 +1,17 @@
-# Import the urllib.request module
+#!/usr/bin/python3
+"""
+Fetches the status of a URL using the urllib package and displays response information.
+"""
+
 import urllib.request
 
-# Define the URL to fetch
-url = "https://alx-intranet.hbtn.io/status"
+if __name__ == "__main__":
+    url = "https://alx-intranet.hbtn.io/status"
 
-# Open the URL and store the response object
-with urllib.request.urlopen(url) as response:
-    # Read the data from the response object as bytes
-    data = response.read()
-    # Decode the data as UTF-8 string
-    data_str = data.decode("utf-8")
-
-    # Print the body of the response
-    print("Body response:")
-    print("\t- type: {}".format(type(data)))
-    print("\t- content: {}".format(data))
-    print("\t- utf8 content: {}".format(data_str))
+    with urllib.request.urlopen(url) as response:
+        content = response.read()
+        print("Body response:")
+        print(f"    - type: {type(content)}")
+        print(f"    - content: {content}")
+        print(f"    - utf8 content: {content.decode('utf-8')}")
 
